@@ -13,11 +13,15 @@ require('angular-moment/angular-moment')
 
 import routes from './config/routes'
 import fbInits from './config/fbInits'
+import optica from './components/optica'
 import lista from './components/listaOpticas'
+import topbar from './components/topBar'
 import inouts from './services/inouts'
 
 angular.module('fbApp',[ngAnimate, ngMaterial, uirouter,'angularMoment','firebase','ezfb'])
     .config(routes)
     .config(fbInits)
     .service('inouts',inouts)
+    .component('optica',optica)
     .component('lista', lista)
+    .component('topbar', topbar)
