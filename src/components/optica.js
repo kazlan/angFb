@@ -10,7 +10,11 @@ export default {
             <md-card-title>
                 <md-card-title-text>
                     <span class="md-headline">{{::$ctrl.fbData.from.name}}</span>
-                    <span class="md-subhead">{{::$ctrl.fbData.message}}</span>
+                    <span class="md-subhead">
+                        {{::$ctrl.fbData.message | limitTo:110}}...
+                        </br>
+                        <p am-time-ago="::$ctrl.fbData.updated_time"></p>
+                    </span>
                 </md-card-title-text>
                 <md-card-title-media>
                     <div class="md-media-lg card-media">
@@ -18,15 +22,6 @@ export default {
                     </div>
                 </md-card-title-media>
             </md-card-title>
-            <md-card-actions layout="row" layout-align="start center">
-                <md-card-actions>
-                        <span am-time-ago="::$ctrl.fbData.updated_time"></span>
-                </md-card-actions>
-                <md-card-actions>
-                    <md-button>Action 1</md-button>
-                    <md-button>Action 2</md-button>
-                </md-card-actions>
-            </md-card-actions>
         </md-card>
         `
 }

@@ -1,6 +1,6 @@
 import Rx from 'rxjs'
 
-const lista = [
+const old_lista = [
         {nombre: 'sampere', checked: false, page: 'sampereoptica'},
         {nombre: 'vilareal', checked: false, page: 'opticavilareal'}
     ]

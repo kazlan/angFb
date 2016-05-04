@@ -6,8 +6,7 @@ export default {
     bindings: {
     },
     controller: ($scope, $element, $attrs, inouts)=>{
-        $scope.lista = inouts.fetchLista();   
-        
+        $scope.lista = inouts.fetchLista();        
     },
     template: `
         <md-list>
