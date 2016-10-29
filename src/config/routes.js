@@ -4,6 +4,6 @@ export default ($stateProvider,$urlRouterProvider)=>{
         .state('home',{
             url: '/',
             templateUrl: 'main.html',
-            //controller: homeController
+            controller: 'mainController'
         })
 }

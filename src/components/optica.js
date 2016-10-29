@@ -3,7 +3,8 @@ export default {
         page: '<'
     },
     controller: function(inouts){
-        inouts.fbData$(this.page.$value).subscribe(x=>this.fbData = x)
+        //inouts.fbData$(this.page.$value).subscribe(x=>this.fbData = x)
+        console.log('optica', $ctrl.page)
     },
     template: `
         <md-card disabled md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>

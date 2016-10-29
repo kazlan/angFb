@@ -4,13 +4,11 @@
 //
 export default {
     bindings: {
-    },
-    controller: ($scope, $element, $attrs, inouts)=>{
-        $scope.lista = inouts.fetchLista();        
+        opticas: "<"
     },
     template: `
         <md-list>
-            <optica page="optica" ng-repeat="optica in lista"></optica>
+            <optica page="optica" ng-repeat="optica in $ctrl.opticas"></optica>
         </md-list>
        `
 }

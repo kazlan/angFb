@@ -13,6 +13,7 @@ require('angular-moment/angular-moment')
 
 import routes from './config/routes'
 import fbInits from './config/fbInits'
+import mainController from './main.controller.js'
 import optica from './components/optica'
 import lista from './components/listaOpticas'
 import topbar from './components/topBar'
@@ -22,6 +23,8 @@ angular.module('fbApp',[ngAnimate, ngMaterial, uirouter,'angularMoment','firebas
     .config(routes)
     .config(fbInits)
     .service('inouts',inouts)
+    .controller('mainController', mainController)
     .component('optica',optica)
     .component('lista', lista)
     .component('topbar', topbar)
+    

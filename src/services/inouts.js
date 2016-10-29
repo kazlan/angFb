@@ -11,8 +11,12 @@ export default ($firebaseArray,ezfb)=>{
             var ref = new Firebase("https://fbooks.firebaseio.com/clientes")
             return $firebaseArray(ref)
         },
-        fbInfo$: fbInfo(ezfb, $firebaseArray),
-        fbData$: function(id){
+        //fbData$: fbData(id, ezfb),
+        fbInfo$: fbInfo(lista)
+    }
+}
+
+function fbData(id, ezfb){
             return Rx.Observable.fromPromise(
                     ezfb.getLoginStatus()
                     .then(()=>{
@@ -21,12 +25,9 @@ export default ($firebaseArray,ezfb)=>{
                         return ezfb.api(`/${item.data[0].id}?fields=picture,icon,name,message,caption,updated_time,description,from,link`)})
             )
         }
-    }
-}
-function fbInfo(ezfb, $firebaseArray){
-    // recoge lista desde Firebase y procesa con la API de Facebook
-    var ref = $firebaseArray(new Firebase("https://fbooks.firebaseio.com/clientes")) 
-    const fbItems$ = Rx.Observable.from(ref).do(x=>console.log(x))
+function fbInfo(lista){
+    // recoge lista y procesa con la API de Facebook
+    const fbItems$ = Rx.Observable.from(lista).do(x=>console.log(x))
         .map(item => Object.assign( {}, ref, {query: `/${item.$value}/feed?limit=1`}))
         .do(x=>console.log(x))
         .flatMap(item => {
@@ -37,7 +38,6 @@ function fbInfo(ezfb, $firebaseArray){
                         )
                         // return Rx.Observable.fromPromise( ezfb.api(`/${post.data[0].id}`)).do(x=>console.log(x))
                         .withLatestFrom(Rx.Observable.from([item]),(res, it)=> Object.assign({}, res, it))
-        }).do(x=>console.log(x))
-        console.log(ref)
+        })
     return fbItems$
 }
